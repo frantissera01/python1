@@ -1,6 +1,5 @@
 from decimal import Decimal
 
-#perro
 
 productos = {
     "01": {
@@ -50,35 +49,13 @@ productos = {
     },
 }
 
-stock = {
-    "01": {
-        "Nombre": "Iphone 6",
-        "Stock": 10
-    },
-    "02": {
-        "Nombre": "Iphone 7",
-        "Stock": 5
-    },
-    "03": {
-        "Nombre": "Iphone 8",
-        "Stock": 8
-    },
-    "04":{
-        "Nombre": "Iphone X",
-        "Stock": 3
-    },
-    "05": {
-        "Nombre": "Iphone 11",
-        "Stock": 2
-    }
-}
 
 
 carrito = {}
 
 
 def mostrar_producto_detalle():
-    print("==== DETALLES DE PRODUCTOS ====")
+    print(" \n ==== DETALLES DE PRODUCTOS ====")
     for codigo, producto in productos.items():
         print("Codigo: ", codigo)
         print("Nombre: ", producto["Nombre"])
@@ -93,7 +70,7 @@ def buscar_producto_por_codigo():
     codigo = input("Ingrese el código del producto: ")
     if codigo in productos:
         producto = productos[codigo]
-        print("==== DETALLES DEL PRODUCTO ====")
+        print(" \n ==== DETALLES DEL PRODUCTO ====")
         print("Código: ", codigo)
         print("Nombre: ", producto["Nombre"])
         print("Precio: ", producto["Precio"])
@@ -109,7 +86,7 @@ def realizar_compra():
         stock = int(input("Ingrese la cantidad a comprar: "))
         if stock > producto["Stock"]:
             print("No hay suficiente stock disponible.")
-            print("Ingrese nuevamente la cantidad deseada. ")
+            print("Ingrese nuevamente la cantidad deseada.")
         else:
             nombre_producto = producto["Nombre"]
             precio_unitario = producto["Precio"]
@@ -120,17 +97,18 @@ def realizar_compra():
                 "Precio unitario": precio_unitario,
                 "Costo total": costo_total
             }
-            producto["Stock"] -= stock
+            producto["Stock"] -= stock 
             print("Producto agregado al carrito de compras.")
     else:
         print("Producto no encontrado.")
+
 
 def finalizar_compra():
     if not carrito:
         print("No hay productos agregados al carrito.")
         return
 
-    print("==== DETALLES DE LA COMPRA ====")
+    print(" \n ==== DETALLES DE LA COMPRA ====")
     total_compra = 0
     for codigo, item in carrito.items():
         nombre_producto = item["Nombre"]
@@ -139,14 +117,13 @@ def finalizar_compra():
         costo_total = item["Costo total"]
         total_compra += costo_total
         print("Producto: ", nombre_producto)
-        print("Stock ", stock)
+        print("Stock: ", cantidad)
         print("Precio unitario: ", precio_unitario)
         print("Costo total: ", costo_total)
         print("-----------------------------")
-
-    print("Total de la compra:", total_compra)
-    stock[codigo]["Stock"] += cantidad
-
+        
+    print(" \n Total de la compra:", total_compra)
+        
 
 
 def visualizar_carrito():
@@ -158,7 +135,7 @@ def visualizar_carrito():
         costo_total = item["Costo total"]
         print("Código:", codigo)
         print("Nombre:", nombre_producto)
-        print("Cantidad:", stock)
+        print("Stock", stock)
         print("Precio unitario:", precio_unitario)
         print("Costo total:", costo_total)
         print("-----------------------------")
@@ -172,16 +149,16 @@ def modificar_carrito():
         if nueva_cantidad > 0:
             producto["Stock"] = nueva_cantidad
             producto["Costo total"] = producto["Precio unitario"] * nueva_cantidad
-            print("Cantidad modificada correctamente.")
+            print("Cantidad modificada correctamente.\n ")
         else:
             del carrito[codigo]
-            print("Producto eliminado del carrito.")
+            print("Producto eliminado del carrito. \n ")
     else:
-        print("Producto no encontrado en el carrito.")
+        print("Producto no encontrado en el carrito.\n ")
         
 def mostrar_productos_disponibles():
-    print("==== PRODUCTOS DISPONIBLES ====")
-    for codigo, producto in stock.items():
+    print(" \n ==== PRODUCTOS DISPONIBLES ====")
+    for codigo, producto in productos.items():
         print("Nombre: ", producto["Nombre"])
         print("Codigo: ", codigo)
         print("Cantidad disponible:", producto["Stock"])
@@ -194,11 +171,13 @@ carrito = {}
 
 
 
-def menu_principal():
+def menu_principal(bandera=True):
     while True:
-        print("--Bienvenido a SmartApple--")
-        mostrar_productos_disponibles()
-        print("==== MENÚ ====")
+        if bandera:
+            print(" \n ---BIENVENIDOS A SMARTAPPLE---")
+            mostrar_productos_disponibles()
+        bandera = False
+        print("\n ==== MENÚ ====")
         print("1. Mostrar producto en detalle")
         print("2. Buscar producto por código")
         print("3. Realizar compra")
@@ -218,10 +197,11 @@ def menu_principal():
                 print("No hay productos agregados al carrito.")
             else:
                 while True: 
-                    print("---Antes de finalizar, ¿Desea modificar su compra?---")
+                    print(" \n ---Antes de finalizar, ¿Desea modificar su compra?---")
                     opcion_finalizar = mostrar_menu_finalizar()
                     if opcion_finalizar == "1":
                         finalizar_compra()
+                        bandera = True
                         break
                     elif opcion_finalizar == "2":
                         visualizar_carrito()
@@ -231,7 +211,7 @@ def menu_principal():
                         break
                     else:
                         print("Opción inválida. Intente nuevamente.")
-                break
+                        break
         elif opcion == "5":
             print("¡Muchas gracias por visitarnos! ")
             break
