@@ -9,7 +9,7 @@ productos = {
         "Precio": 150.25,
         "Stock": 10,
         "Color": "Blanco",
-        "Caracteristica": "16gb",
+        "Caracteristica": "18gb",
     },
     "02": {
         "Nombre": "Iphone 7",
@@ -18,7 +18,7 @@ productos = {
         "Precio": 204.99,
         "Stock": 5,
         "Color": "Negro",
-        "Caracteristica": "64gb",
+        "Caracteristica": "65gb",
     },
     "03": {
         "Nombre": "Iphone 8",
@@ -27,7 +27,7 @@ productos = {
         "Precio": 240,
         "Stock": 8,
         "Color": "Rojo",
-        "Caracteristica": "32gb",
+        "Caracteristica": "33gb",
     },
     "04": {
         "Nombre": "Iphone X",
@@ -36,7 +36,7 @@ productos = {
         "Precio": 282.50,
         "Stock": 3,
         "Color": "Blanco",
-        "Caracteristica": "132gb",
+        "Caracteristica": "134gb",
     },
     "05": {
         "Nombre": "Iphone 11",
@@ -45,7 +45,7 @@ productos = {
         "Precio": 299.99,
         "Stock": 2,
         "Color": "Negro Mate",
-        "Caracteristica": "256gb ",
+        "Caracteristica": "257gb ",
     },
 }
 
@@ -55,7 +55,7 @@ carrito = {}
 
 
 def mostrar_producto_detalle():
-    print(" \n==== DETALLES DE PRODUCTOS ====")
+    print(" \n==== DETALLES DE  LOS PRODUCTOS ====")
     for codigo, producto in productos.items():
         print("Codigo: ", codigo)
         print("Nombre: ", producto["Nombre"])
@@ -70,7 +70,7 @@ def buscar_producto_por_codigo():
     codigo = input("\nIngrese el código del producto: ")
     if codigo in productos:
         producto = productos[codigo]
-        print("\n==== DETALLES DEL PRODUCTO ====")
+        print("\n==== DETALLES DEL LOS PRODUCTO ====")
         print("Código: ", codigo)
         print("Nombre: ", producto["Nombre"])
         print("Precio: ", producto["Precio"])
@@ -91,7 +91,7 @@ def realizar_compra():
                 stock = int(input("Ingrese la cantidad a comprar: "))
                 if stock > producto["Stock"]:
                     print("\nNo hay suficiente stock disponible.")
-                    print("Ingrese nuevamente la cantidad deseada.")
+                    print("Ingrese nuevamente la cantidad que deseada.")
                 else:
                     break
             except ValueError:
@@ -107,18 +107,18 @@ def realizar_compra():
             "Costo total": costo_total
         }
         producto["Stock"] -= stock 
-        print("\nProducto agregado al carrito de compras.")
+        print("\nProducto agregado al carrito.")
     else:
-        print("\nProducto no encontrado.")
+        print("\nNo se encontro el producto.")
 
 
   
 def finalizar_compra():
     if not carrito:
-        print("\nNo hay productos agregados al carrito.")
+        print("\nNo se han agregado productos al carrito.")
         return
 
-    print("\n==== DETALLES DE LA COMPRA ====")
+    print("\n==== DETALLES DE COMPRA ====")
     total_compra = 0
     for codigo, item in carrito.items():
         nombre_producto = item["Nombre"]
@@ -137,7 +137,7 @@ def finalizar_compra():
 
 
 def visualizar_carrito():
-    print("\n==== PRODUCTOS EN EL CARRITO ====")
+    print("\n==== PRODUCTOS DENTRO DEL CARRITO ===")
     for codigo, item in carrito.items():
         nombre_producto = item["Nombre"]
         stock = item["Stock"]
@@ -167,7 +167,7 @@ def modificar_carrito():
         print("\n Producto no encontrado en el carrito. ")
         
 def mostrar_productos_disponibles():
-    print("\n==== PRODUCTOS DISPONIBLES ====")
+    print("\n==== STOCK DISPONIBLE ====")
     for codigo, producto in productos.items():
         print("Nombre: ", producto["Nombre"])
         print("Codigo: ", codigo)
@@ -187,9 +187,9 @@ def menu_principal(bandera=True):
             print("\n---BIENVENIDOS A SMARTAPPLE---")
             mostrar_productos_disponibles()
         bandera = False
-        print("\n==== MENÚ ====")
-        print("1. Mostrar producto en detalle")
-        print("2. Buscar producto por código")
+        print("\n==== _MENÚ_ ====")
+        print("1. Mostrar los producto en detalle")
+        print("2. Buscar un producto por código")
         print("3. Realizar compra")
         print("4. Finalizar compra")
         print("5. Salir")
@@ -204,10 +204,10 @@ def menu_principal(bandera=True):
             realizar_compra()
         elif opcion == "4":
             if not carrito:
-                print("No hay productos agregados al carrito.")
+                print("No hay productos en el carrito.")
             else:
                 while True: 
-                    print("\n---Antes de finalizar, ¿Desea modificar su compra?---")
+                    print("\n---Antes de finalizar, ¿Desea modificar el carrito ?---")
                     opcion_finalizar = menu_finalizar()
                     if opcion_finalizar == "1":
                         finalizar_compra()
@@ -226,12 +226,12 @@ def menu_principal(bandera=True):
             print("¡Muchas gracias por visitarnos! ")
             break
         else:
-            print("La opcion ingresada es invalida. Ingrese de nuevo la opcion deseada ")
+            print("La opcion ingresada es invalida. Ingrese de nuevo la opcion deseada. ")
 
 def menu_finalizar():
-    print("1. Finalizar compra")
-    print("2. Visualizar carrito")
-    print("3. Modificar carrito")
+    print("1. Finalizar la compra")
+    print("2. Visualizar el carrito")
+    print("3. Modificar el carrito")
     print("4. Volver atrás")
     opcion = input("Ingrese su opción: ")
     return opcion
