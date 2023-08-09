@@ -45,26 +45,27 @@ while True:
     
     if opcion == "1":
         num1 = ingresa_numero("Ingrese el primer número: ")
-        num2 = ingresa_numero("Ingrese el segundo número: ")
+        num2 = ingresa_numero("Ingrese el numero que desea sumar: ")
         resultado = suma(num1, num2)
         print("El resultado es: ", resultado)
     elif opcion == "2":
         num1 = ingresa_numero("Ingrese el primer número: ")
-        num2 = ingresa_numero("Ingrese el segundo número: ")
+        num2 = ingresa_numero("Ingrese el número que desea restar: ")
         resultado = resta(num1, num2)
         print("El resultado es: ", resultado)
     elif opcion == "3":
-        num1 = ingresa_numero("Ingrese el primer número: ")
-        num2 = ingresa_numero("Ingrese el segundo número: ")
+        num1 = ingresa_numero("Ingrese el multiplicando: ")
+        num2 = ingresa_numero("Ingrese el multiplicador: ")
         resultado = multiplicar(num1, num2)
         print("El resultado es: ", resultado)
     elif opcion == "4":
-        num1 = ingresa_numero("Ingrese el primer número: ")
-        num2 = ingresa_numero("Ingrese el segundo número: ")
+        num1 = ingresa_numero("Ingrese el numero dividendo: ")
+        num2 = ingresa_numero("Ingrese el numero divisor: ")
         resultado = dividir(num1, num2)
         print("El resultado es: ", resultado)
     elif opcion == "5":
         base = ingresa_numero("Ingrese la base: ")
+        print("El resultado es: ", resultado)
         exponente = ingresa_numero("Ingrese el exponente: ")
         resultado = potencia(base, exponente)
         print("El resultado es: ", resultado)
